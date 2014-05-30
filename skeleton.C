@@ -44,6 +44,9 @@ void skeleton(const TString inputfile="HHToGGBB_14TeV_0.root")
     // reset counter variable
     iMaxPtPhoton=-1;
 
+    // skip event if it diesn't have at least one photon
+    if (branchPhoton->GetEntries()<1) continue;
+
     for (Int_t iPhoton=0; iPhoton<branchPhoton->GetEntries(); iPhoton++) { // photon loop
       photon = (Photon*) branchPhoton->At(iPhoton);
 

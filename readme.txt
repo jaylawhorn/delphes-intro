@@ -2,11 +2,13 @@ DELPHES QUICKSTART - JAY LAWHORN 10/2/13
 
 In rootlogon.C, change file paths to your own installation of delphes.
 
-Before running, need to setup cms environment. This can be done by 
+There are three different set of scripts in this folder - 
 
-    cd (your CMSSW_x_x_x/src directory)
+skeleton.C is a barebones introduction to using Delphes and ROOT.
 
-    cmsenv
+read_txt.C is an introduction to reading configuration info stored in a text file.
+
+selectDelphes.C (and run.sh/submit.sh) is an introduction to submitting jobs to lxbtch.
 
 Run with:
 
