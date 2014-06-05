@@ -21,12 +21,9 @@ it's done executing the file. The parenthesis denote that those arguments are
 optional.
 
 Delphes Resources:
-Delphes-3.0.10/examples/Example1.C , Example2.C , Example3.C
+Delphes/examples/Example1.C , Example2.C , Example3.C
 https://cp3.irmp.ucl.ac.be/projects/delphes/wiki/WorkBook (particularly 2. ROOT tree description)
-Delphes-3.0.10/classes/*
+Delphes/classes/*
 
 PDG codes: 
 http://pdg.lbl.gov/2002/montecarlorpp.pdf
-
-HHToBBTauTau Study:
-http://www.cmsaf.mit.edu/twiki/bin/view/CmsHep/HHBBTauTauStudy
