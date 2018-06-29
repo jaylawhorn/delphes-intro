@@ -33,9 +33,9 @@ typedef ROOT::Math::LorentzVector<ROOT::Math::PtEtaPhiM4D<double> > LorentzVecto
 
 Float_t deltaR( const Float_t eta1, const Float_t eta2, const Float_t phi1, const Float_t phi2 );
 
-void selectDelphes(const TString inputfile="root://eoscms.cern.ch//store/group/phys_higgs/upgrade/PhaseII/Configuration4v2/140PileUp/LL-4p-0-100-v1510_14TEV/LL-4p-0-100-v1510_14TEV_100005594_PhaseII_Conf4v2_140PileUp.root",
+void selectDelphes(const TString inputfile="/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/ZZZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU/ZZZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_10_0.root",
 		   const Float_t xsec=1341.36923,
-		   const TString outputfile="/afs/cern.ch/work/k/klawhorn/SnowmassSamples/PhaseII/Configuration4v2/LL-4p-0-100-v1510_14TEV_100005594_PhaseII_Conf4v2_140PileUp.root") {
+		   const TString outputfile="foo.root") {
 
   // declare constants
   const Double_t MUON_MASS = 0.105658369;
@@ -60,7 +60,7 @@ void selectDelphes(const TString inputfile="root://eoscms.cern.ch//store/group/p
   TClonesArray *branchJet = treeReader->UseBranch("Jet");
   TClonesArray *branchGenJet = treeReader->UseBranch("GenJet");
   TClonesArray *branchElectron = treeReader->UseBranch("Electron");
-  TClonesArray *branchMuon = treeReader->UseBranch("Muon");
+  TClonesArray *branchMuon = treeReader->UseBranch("MuonLoose");
   TClonesArray *branchEvent = treeReader->UseBranch("Event");
 
   // set up loop variables
@@ -127,7 +127,8 @@ void selectDelphes(const TString inputfile="root://eoscms.cern.ch//store/group/p
   // counters for b-quark and tau candidates
   Int_t bCan=0; Int_t tCan=0;
 
-  for (Int_t iEntry=0; iEntry<numberOfEntries; iEntry++) { // entry loop
+  //for (Int_t iEntry=0; iEntry<numberOfEntries; iEntry++) { // entry loop
+  for (Int_t iEntry=0; iEntry<1000; iEntry++) { // entry loop
     treeReader->ReadEntry(iEntry);
 
     // comment out following line for di-higgs samples
@@ -327,7 +328,7 @@ void selectDelphes(const TString inputfile="root://eoscms.cern.ch//store/group/p
     } // end electron loop
 
     // skip event if there weren't two reconstructed b-jets and two tau
-    if ( ( bCan<2 ) || ( tCan<2 ) ) continue;
+    if ( ( tCan<2 ) ) continue;
 
     // fill 4-vector for leading b-jet
     LorentzVector vRecoB1(0,0,0,0);
