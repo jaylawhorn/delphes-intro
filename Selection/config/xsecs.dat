@@ -1,0 +1,9 @@
+##########################
+#
+#      CERN
+#
+##########################
+##shortname     xsec       sig(xsec) notCERN	sampleN location
+#WWZ	        181.7	   0.8	     0		101     /eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WWZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
+#WZZ	         40.4	   0.2	     0		102     /eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WZZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
+ZZZ	         15.3	   0.1	     0		103     /eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/ZZZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
