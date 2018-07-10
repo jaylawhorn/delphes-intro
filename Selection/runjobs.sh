@@ -8,6 +8,7 @@ xsec=$5
 id=$6
 runMacro=$7
 soFile=$8
+pcmFile=$9
 
 
 workDir=`pwd`
@@ -22,9 +23,10 @@ cd $workDir
 cp ${scramdir}/rootlogon.C .
 cp ${scramdir}/$runMacro  .
 cp ${scramdir}/$soFile  .
+cp ${scramdir}/$pcmFile  .
 
-echo root -l -b -q ${runMacro}+\(\"${inputDir}${inputFile}\",${xsec},${id},\"${inputFile}\"\)
-root -l -b -q ${runMacro}+\(\"${inputDir}${inputFile}\",${xsec},${id},\"${inputFile}\"\)
+echo root -l -b -q ${runMacro}+\(\"${inputDir}/${inputFile}\",${xsec},${id},\"${inputFile}\"\)
+root -l -b -q ${runMacro}+\(\"${inputDir}/${inputFile}\",${xsec},${id},\"${inputFile}\"\)
 
 cp ${inputFile} $outputDir/${inputFile}
 

@@ -49,7 +49,7 @@ void selection(const TString inputfile="/eos/cms/store/group/upgrade/delphes_out
   TChain chain("Delphes");
   chain.Add(inputfile);
   ExRootTreeReader *treeReader = new ExRootTreeReader(&chain);
-  Long64_t numberOfEntries = treeReader->GetEntries()/10;
+  Long64_t numberOfEntries = treeReader->GetEntries();
 
   TClonesArray *branchJet = treeReader->UseBranch("Jet");
   if (!(branchJet)) {
@@ -129,10 +129,10 @@ void selection(const TString inputfile="/eos/cms/store/group/upgrade/delphes_out
     // ********************
 
     eventWeight = 1;
-    if (branchEvent && sampleNo!=100) {
-      event = (LHEFEvent*) branchEvent->At(0);
-      eventWeight*=event->Weight;
-    }
+    //if (branchEvent && sampleNo!=100) {
+    //event = (LHEFEvent*) branchEvent->At(0);
+    //eventWeight*=event->Weight;
+    //}
     eventWeight *= xsec;
 
     for (Int_t iMuon=0; iMuon<branchMuon->GetEntries(); iMuon++) { // reco muon loop
@@ -140,7 +140,7 @@ void selection(const TString inputfile="/eos/cms/store/group/upgrade/delphes_out
       
       if (fabs(mu->Eta)>4.0) continue;
       if (mu->PT<10) continue;
-      if (mu->IsolationVar>0.4) continue;
+      //if (mu->IsolationVar>0.4) continue;
 
       genPart = (GenParticle*) mu->Particle.GetObject();
 
@@ -163,7 +163,9 @@ void selection(const TString inputfile="/eos/cms/store/group/upgrade/delphes_out
       }
     }
     
-    if (mMu1!=MUON_MASS || mMu2!=MUON_MASS) continue;
+    if (mMu1<0 || mMu2<0) continue;
+    
+    //std::cout << "hi" << std::endl;
 
     TLorentzVector m1; m1.SetPtEtaPhiM(ptMu1, etaMu1, phiMu1, mMu1);
     TLorentzVector m2; m2.SetPtEtaPhiM(ptMu2, etaMu2, phiMu2, mMu2);

@@ -12,14 +12,17 @@ while read line #loop over lines in ${conf_file}
 do
     array=($line)
     if [[ "${array[0]:0:1}" != "#" ]]; then
-        if [ ${array[3]} -eq "1" ]; then
-            testvar="$( /afs/cern.ch/project/eos/installation/0.3.4/bin/eos.select ls ${array[5]} 2>&1 > /dev/null )"
+	echo "hi"
+        if [[ ${array[3]} -eq "1" ]]; then
+	    echo "i'm sad"
+            testvar="$( xrdfs dcache-cms-xrootd.desy.de ls ${array[5]} 2>&1 > /dev/null )"
+	    echo "i'm extra sad"
             if [[ ${testvar} != "" ]]; then
-                echo "Input folder does not exist... skipping" ${array[0]}
+                echo "Input folder does not exist or no VOMS proxy... skipping" ${array[0]}
                 continue
             fi
-            filelist=(`/afs/cern.ch/project/eos/installation/0.3.4/bin/eos.select ls ${array[5]} | grep root`)
-        elif [ ${array[3]} -eq "0" ]; then
+            filelist=(`xrdfs dcache-cms-xrootd.desy.de ls -u ${array[5]} | grep root`)
+        elif [[ ${array[3]} -eq "0" ]]; then
             filelist=(`ls ${array[5]} | grep root`)
         fi
         size=${#filelist[@]}
@@ -27,7 +30,7 @@ do
 	if [ ! -e "${conf_dir}/${array[0]}.CONF" ]; then
             echo "Creating filelist for" ${array[0]}
             if [ ${array[3]} -eq "1" ]; then
-                echo "root://eoscms.cern.ch/"${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
+                echo ${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
             elif [ ${array[3]} -eq "0" ]; then
                 echo ${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
             fi
@@ -40,9 +43,9 @@ do
             smallsize=`wc -l ${conf_dir}/${array[0]}.CONF | cut -d' ' -f1`
             echo "Regenerating filelist for" ${array[0]}":"
             echo ${size} "files found in" ${array[5]} "but only" $((smallsize-1)) "listed in file"
-            if [ ${array[3]} -eq "1" ]; then
-                echo "root://eoscms.cern.ch/"${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
-            elif [ ${array[3]} -eq "0" ]; then
+            if [[ ${array[3]} -eq "1" ]]; then
+                echo ${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
+            elif [[ ${array[3]} -eq "0" ]]; then
                 echo ${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
             fi
             for ((i=0; i<${#filelist[@]}; i++))
@@ -66,6 +69,7 @@ do
     outputDir=${outputBase}/${outname}
     workDir=$CMSSW_BASE #`pwd`                                                                              
     soFile=`echo $runMacro | sed 's/\./_/'`.so
+    pcmFile=`echo $runMacro | sed 's/\./_/'`*pcm
     script=runjobs.sh
     
     # check a few things                                                                                      
@@ -77,12 +81,13 @@ do
         echo "-------> error: forgot to recompile run macro."
         exit 1
     fi
-    
+
     mkdir -p ${outputDir}
     
     cp rootlogon.C             $workDir
     cp $runMacro               $workDir
     cp $soFile                 $workDir
+    cp $pcmFile                $workDir
     
     sed 1d ${file} | while read line
     do
@@ -100,10 +105,8 @@ do
 	    continue
 	    #echo "Output file exists. Not submitting."
 	else
-	    echo $script $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile 
-	    bsub -o ${outputDir}/out.${line%.*}.txt -e ${outputDir}/err.${line%.*}.txt -q 8nm ${script} $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile 
-
-	    exit
+	    echo $script $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile $pcmFile
+	    #bsub -o ${outputDir}/out.${line%.*}.txt -e ${outputDir}/err.${line%.*}.txt -q 8nm ${script} $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile $pcmFile
 	fi
     done 
 done
