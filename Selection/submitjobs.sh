@@ -14,14 +14,12 @@ do
     if [[ "${array[0]:0:1}" != "#" ]]; then
 	echo "hi"
         if [[ ${array[3]} -eq "1" ]]; then
-	    echo "i'm sad"
             testvar="$( xrdfs dcache-cms-xrootd.desy.de ls ${array[5]} 2>&1 > /dev/null )"
-	    echo "i'm extra sad"
             if [[ ${testvar} != "" ]]; then
                 echo "Input folder does not exist or no VOMS proxy... skipping" ${array[0]}
                 continue
             fi
-            filelist=(`xrdfs dcache-cms-xrootd.desy.de ls -u ${array[5]} | grep root`)
+            filelist=(`xrdfs dcache-cms-xrootd.desy.de ls ${array[5]} | grep root`)
         elif [[ ${array[3]} -eq "0" ]]; then
             filelist=(`ls ${array[5]} | grep root`)
         fi
@@ -30,13 +28,17 @@ do
 	if [ ! -e "${conf_dir}/${array[0]}.CONF" ]; then
             echo "Creating filelist for" ${array[0]}
             if [ ${array[3]} -eq "1" ]; then
-                echo ${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
+                echo "root://131.169.191.218:1094/"${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
             elif [ ${array[3]} -eq "0" ]; then
                 echo ${array[5]} ${array[1]} ${array[4]} > ${conf_dir}/${array[0]}.CONF
             fi
             for ((i=0; i<${#filelist[@]}; i++))
             do
-                echo ${filelist[i]} >> ${conf_dir}/${array[0]}.CONF
+		if [ ${array[3]} -eq "1" ]; then
+		    echo ${filelist[i]##*/} >> ${conf_dir}/${array[0]}.CONF
+		elif [ ${array[3]} -eq "0" ]; then
+                    echo ${filelist[i]} >> ${conf_dir}/${array[0]}.CONF
+		fi
             done
 
 	elif [[ -e "${conf_dir}/${array[0]}.CONF" ]] && [[ `wc -l ${conf_dir}/${array[0]}.CONF | cut -d' ' -f1` != $((size+1)) ]]; then
@@ -67,11 +69,12 @@ do
     outname=${file%.*}
     outname=${outname##*/}
     outputDir=${outputBase}/${outname}
-    workDir=$CMSSW_BASE #`pwd`                                                                              
+    workDir=${CMSSW_BASE}/src/
     soFile=`echo $runMacro | sed 's/\./_/'`.so
     pcmFile=`echo $runMacro | sed 's/\./_/'`*pcm
     script=runjobs.sh
-    
+    vomsProxy=`voms-proxy-info | grep -oh "\w*x509up_u\w*"`
+
     # check a few things                                                                                      
     if [ ! "$CMSSW_BASE" ]; then
         echo "-------> error: define cms environment."
@@ -81,6 +84,11 @@ do
         echo "-------> error: forgot to recompile run macro."
         exit 1
     fi
+    if [[ "${vomsProxy:0:1}" != "x" ]]; then
+	echo "-------> error: no voms-proxy found, jobs for files outside CERN will fail"
+    else
+	cp /tmp/${vomsProxy} $workDir
+    fi
 
     mkdir -p ${outputDir}
     
@@ -88,7 +96,7 @@ do
     cp $runMacro               $workDir
     cp $soFile                 $workDir
     cp $pcmFile                $workDir
-    
+
     sed 1d ${file} | while read line
     do
 	#if [[ ! -e ${outputDir} ]]; then
@@ -105,7 +113,7 @@ do
 	    continue
 	    #echo "Output file exists. Not submitting."
 	else
-	    echo $script $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile $pcmFile
+	    echo $script $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile $pcmFile $vomsProxy
 	    #bsub -o ${outputDir}/out.${line%.*}.txt -e ${outputDir}/err.${line%.*}.txt -q 8nm ${script} $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile $pcmFile
 	fi
     done 
