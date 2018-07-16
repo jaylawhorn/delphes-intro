@@ -2,7 +2,7 @@
 
 #master submission script
 conf_dir=/afs/cern.ch/work/j/jlawhorn/public/forXLL/delphes-intro/Selection/config/
-runMacro=selection.C
+runMacro=selectionWWZ.C
 outputBase=/afs/cern.ch/work/j/jlawhorn/public/delphes-sel-test/
 
 echo "Checking for new samples and"
@@ -56,7 +56,7 @@ do
             done
         fi
     fi
-done < "${conf_dir}/xsecs.dat"
+done < "${conf_dir}/xsecs-full.dat"
 
 echo " "
 echo "Done checking config files."
@@ -114,7 +114,7 @@ do
 	    #echo "Output file exists. Not submitting."
 	else
 	    echo $script $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile $pcmFile $vomsProxy
-	    #bsub -o ${outputDir}/out.${line%.*}.txt -e ${outputDir}/err.${line%.*}.txt -q 8nm ${script} $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile $pcmFile
+	    bsub -o ${outputDir}/out.${line%.*}.txt -e ${outputDir}/err.${line%.*}.txt -q 1nh ${script} $workDir $outputDir ${info[0]} ${line} ${info[1]} ${info[2]} $runMacro $soFile $pcmFile $vomsProxy
 	fi
     done 
 done
