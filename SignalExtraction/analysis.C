@@ -15,38 +15,41 @@
 #include <iomanip>
 #include <fstream>
 #include "TLorentzVector.h"
-using namespace std;
 
-Float_t deltaR( const Float_t eta1, const Float_t eta2, const Float_t phi1, const Float_t phi2 );
-Float_t deltaPhi( const Float_t phi1, const Float_t phi2 );
+using namespace std;
 
 class TLepton : public TObject {
 public:
+  TLepton():
+    PT(0), Eta(0), Phi(0), Charge(0), PID(0), IsolationVar(0)
+  {}
   TLepton(float pt, float eta, float phi, int charge, int pid, float iso):
     PT(pt), Eta(eta), Phi(phi), Charge(charge), PID(pid), IsolationVar(iso)
   {}
-
   ~TLepton(){}
 
   float PT; float Eta; float Phi; int Charge; int PID; float IsolationVar;
-
-  ClassDef(TLepton,1);
 };
 
 class THadJet : public TObject {
 public:
+  THadJet():
+    PT(0), Eta(0), Phi(0), Mass(0), BTag(0)
+  {}
   THadJet(float pt, float eta, float phi, float mass, int btag):
     PT(pt), Eta(eta), Phi(phi), Mass(mass), BTag(btag)
   {}
-
   ~THadJet(){}
 
   float PT; float Eta; float Phi; float Mass; int BTag;
-
-  ClassDef(THadJet,1);
 };
 
-void analysis(const TString inputfile="test.root") {
+Float_t deltaR( const Float_t eta1, const Float_t eta2, const Float_t phi1, const Float_t phi2 );
+
+Float_t deltaPhi( const Float_t phi1, const Float_t phi2 );
+
+
+void analysis(const TString inputfile="/afs/cern.ch/work/j/jlawhorn/public/delphes-sel-test/ZZZ_hadd.root") {
 
   Float_t eventWeight;
   uint nEl, nMu, nJet, nBJet;
@@ -56,7 +59,7 @@ void analysis(const TString inputfile="test.root") {
   TClonesArray *vEl  = new TClonesArray("TLepton");
   TClonesArray *vMu  = new TClonesArray("TLepton");
   TClonesArray *vJet = new TClonesArray("THadJet");
-  
+
   TFile *inFile = new TFile(inputfile, "READ");
   TTree *inTree = (TTree*) inFile->Get("Events");
   inTree->SetBranchAddress("eventWeight", &eventWeight);
@@ -70,6 +73,8 @@ void analysis(const TString inputfile="test.root") {
   inTree->SetBranchAddress("vEl", &vEl);
   inTree->SetBranchAddress("vMu", &vMu);
   inTree->SetBranchAddress("vJet", &vJet);
+
+  inTree->GetEntry(0);
 
   //      no spaces  here V or here V
   TH1D *hNLep = new TH1D("hNLep", "hNLep", 15, 0, 15);
@@ -85,10 +90,8 @@ void analysis(const TString inputfile="test.root") {
     hNJet->Fill(vJet->GetEntries());
     hNvN->Fill(vEl->GetEntries()+vMu->GetEntries(), vJet->GetEntries());
 
-    //TLepton *ele1 = (TLepton*)vEl->At(0);
-    cout << ((TLepton*)vEl->At(0))->PT << endl;
+    TLepton *ele1 = (TLepton*) (*vEl)[0];
     hPtEle1->Fill(ele1->PT);
-
   }  
 
   TCanvas *c = new TCanvas("c","c",800, 600);
@@ -104,7 +107,6 @@ void analysis(const TString inputfile="test.root") {
 
   hPtEle1->Draw("");
   c->SaveAs("ptEle1.png");
-
   
 }
 
