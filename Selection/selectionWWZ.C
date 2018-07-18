@@ -83,7 +83,7 @@ void selectionWWZ(const TString inputfile="/eos/cms/store/group/upgrade/delphes_
   
   TClonesArray *branchElectron = treeReader->UseBranch("Electron");
   TClonesArray *branchMuon = treeReader->UseBranch("MuonLoose");
-  TClonesArray *branchMET =treeReader->UseBranch("MissingET");
+  TClonesArray *branchMET = treeReader->UseBranch("MissingET");
   TClonesArray *branchEvent = treeReader->UseBranch("Event");
   
   //set up loop variables
@@ -140,7 +140,7 @@ void selectionWWZ(const TString inputfile="/eos/cms/store/group/upgrade/delphes_
       
       if (fabs(mu->Eta)>3.0) continue;
       if (mu->PT<10) continue;
-      if (mu->IsolationVar>0.2) continue;
+      //if (mu->IsolationVar>0.2) continue;
 
       new(pMu[nMu]) TLepton(mu->PT, mu->Eta, mu->Phi, mu->Charge, 13, mu->IsolationVar);
 
@@ -155,14 +155,14 @@ void selectionWWZ(const TString inputfile="/eos/cms/store/group/upgrade/delphes_
       
       if (fabs(ele->Eta)>3.0) continue;
       if (ele->PT<10) continue;
-      if (ele->IsolationVar>0.2) continue;
+      //if (ele->IsolationVar>0.2) continue;
 
       new(pEl[nEl]) TLepton(ele->PT, ele->Eta, ele->Phi, ele->Charge, 11, ele->IsolationVar);
 
       nEl++;
     }
 
-    if (nEl+nMu<4) continue;
+    if (nEl+nMu<2) continue;
 
     nJet=0; nBJet=0;
 
