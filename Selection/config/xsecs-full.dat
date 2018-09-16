@@ -4,38 +4,50 @@
 #      CERN
 #
 ##########################
-WWW	        146.2	   0.6	     0	100	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WWW_4F_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
-WWZ	        181.7	   0.8	     0	101	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WWZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
-WZZ	         40.4	   0.2	     0	102	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WZZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
-ZZZ	         15.3	   0.1	     0	103	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/ZZZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
-WW	     113000.	   0.0	     0	0	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WW_TuneCUETP8M1_14TeV-pythia8_200PU
-ZZTo2L2Q       1570.	   0.0	     0	1	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/ZZTo2L2Q_14TeV_amcatnloFXFX_madspin_pythia8_200PU
-TT	     880000.	   0.0	     0	2	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/TT_TuneCUETP8M2T4_14TeV-powheg-pythia8_200PU
+#WWW	        146.2	   0.6	     0	100	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WWW_4F_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
+#WWZ	        181.7	   0.8	     0	101	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WWZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
+#WZZ	         40.4	   0.2	     0	102	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WZZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
+#ZZZ	         15.3	   0.1	     0	103	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/ZZZ_TuneCUETP8M1_14TeV-amcatnlo-pythia8_200PU
+#WWWTo3L3Nu	 22.0	   0.0	     0	104	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WWWTo3L3Nu_aQGC_TuneCUEP8M2T4_14TeV-madgraph-pythia8_200PU
+#WWZTo4L2Nu	  1.17     0.0	     0	105	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WWZTo4L2Nu_aQGC_TuneCUEP8M2T4_14TeV-madgraph-pythia8_200PU
+#WW	     131000.	   0.0	     0	0	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WW_TuneCUETP8M1_14TeV-pythia8_200PU
+#ZZTo2L2Q      3721.	   0.0	     0	1	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/ZZTo2L2Q_14TeV_amcatnloFXFX_madspin_pythia8_200PU
+TT	     864400.	   0.0	     0	2	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/TT_TuneCUETP8M2T4_14TeV-powheg-pythia8_200PU
+#TTW	        225.	   0.0	     0	3	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/TTWJetsToLNu_TuneCUETP8M1_14TeV-amcatnloFXFX-madspin-pythia8_200PU	
+#DYJets_70	161600.	   0.0	     0	4	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14_hadd/DYJetsToLL_M-50_HT-70to100_TuneCUETP8M1_14TeV-madgraphMLM-pythia8_200PU
+#DYJets_100	150000.	   0.0	     0	5	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14_hadd/DYJetsToLL_M-50_HT-100to200_TuneCUETP8M1_14TeV-madgraphMLM-pythia8_200PU
+#DYJets_200	 32950.	   0.0	     0	6	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14_hadd/DYJetsToLL_M-50_HT-200to400_TuneCUETP8M1_14TeV-madgraphMLM-pythia8_200PU
+#DYJets_400	  3911.	   0.0	     0	7	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14_hadd/DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_14TeV-madgraphMLM-pythia8_200PU
+#DYJets_600	   830.	   0.0	     0	8	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14_hadd/DYJetsToLL_M-50_HT-600to800_TuneCUETP8M1_14TeV-madgraphMLM-pythia8_200PU
+#DYJets_800	   385.	   0.0	     0	9	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14_hadd/DYJetsToLL_M-50_HT-800to1200_TuneCUETP8M1_14TeV-madgraphMLM-pythia8_200PU
+#DYJets_1200	    88.	   0.0	     0	10	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14_hadd/DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_14TeV-madgraphMLM-pythia8_200PU
+#DYJets_2500	     1.6   0.0	     0	11	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14_hadd/DYJetsToLL_M-50_HT-2500toInf_TuneCUETP8M1_14TeV-madgraphMLM-pythia8_200PU
+#TT_350		  1040.	   0.0	     0	12	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/TT_TuneCUETP8M2T4_14TeV-powheg-pythia8-GenJetPt-350GeV_200PU
+#TT_950		  0.303	   0.0	     0	13	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/TT_TuneCUETP8M2T4_14TeV-powheg-pythia8-GenJetPt-950GeV_200PU
+#WWJJ_QCD	 13.1	   0.0	     0	14	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WWJJTo2L2Nu2J_SS_QCD_TuneCUEP8M2T4_14TeV-madgraph-pythia8_200PU
+#WZ3LNu_0j	  3125.	   0.0	     0	15	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/WZTo3LNu_0Jets_14TeV-madgraphMLM-pythia8_200PU
+ttHToZZTo4L    	 0.079 	   0.0	     0	16	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/ttH_HToZZ_4L_M125_14TeV_powheg2_JHUgenV702_pythia8_200PU
+#ttHH		  0.731	   0.0	     0	17	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/TTHH_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#ttZH		  1.24	   0.0	     0	18	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/TTZH_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+VBFHToZZTo4L	  0.554	   0.0	     0	19	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/VBF_HToZZTo4L_M125_14TeV_powheg2_JHUgenV702_pythia8_200PU
+#VHToNonBB		   0.0	     0	20	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/VHToNonbb_M125_14TeV_amcatnloFXFX_madspin_pythia8_200PU
+WMHToZZTo4L	0.076	   0.0	     0	21	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/WminusH_HToZZTo4L_M125_14TeV_powheg2-minlo-HWJ_JHUgenV6_pythia8_200PU
+WPHToZZTo4L	0.118	   0.0	     0	22	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/WplusH_HToZZTo4L_M125_14TeV_powheg2-minlo-HWJ_JHUgenV6_pythia8_200PU
+#tZqToLL		85.	   0.0	     0	23 	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/tZq_ll_4f_14TeV-amcatnlo-madspin-pythia8_200PU
 ##########################
 #
 #      DESY, as of 7/9, all start with root://dcache-cms-xrootd.desy.de/
 #
 ##########################
-#qcd sample xsecs at 13 TeV
-#missing QCD_800, QCD_300
-QCD_1000        1.613*1000 0.0       1	3	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/QCD_Pt-1000toInf_TuneCUETP8M1_14TeV_pythia8_200PU
-QCD_120	   467500.0*1000   0.0       1	4	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/QCD_Pt-120to170_TuneCUETP8M1_14TeV_pythia8_200PU
-QCD_17     117400.0*1000   0.0       1	5	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/QCD_Pt-170to300_TuneCUETP8M1_14TeV_pythia8_200PU
-QCD_50   19100000.0*1000   0.0       1	6	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/QCD_Pt-50to80_TuneCUETP8M1_14TeV_pythia8_200PU
-QCD_60        185.9*1000   0.0       1	7	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/QCD_Pt-600to800_TuneCUETP8M1_14TeV_pythia8_200PU
-QCD_80    2735000.0*1000   0.0       1	8	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/QCD_Pt-80to120_TuneCUETP8M1_14TeV_pythia8_200PU
-#TTTT 14 TeV xsec (https://arxiv.org/pdf/1206.3064.pdf)
-TTTT	  15.35		0.03	1	9	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTTT_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
-#TTZ 13 TeV xsec
-TTZ	 653.		1.	1	10	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTZJets_TuneCUETP8M2_14TeV_madgraphMLM-pythia8_200PU
-##########################
-#
-#      for later
-#
-##########################
-#ttHToZZTo4L	  0.079	   0.0	     /eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/ttH_HToZZ_4L_M125_14TeV_powheg2_JHUgenV702_pythia8_200PU
-#ZHToBBLL	 12.5	   0.0	     /eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/ZH_HToBB_ZToLL_M125_14TeV_powheg_pythia8_200PU
-#VBFHToZZTo4L	  0.55	   0.0	     /eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/VBF_HToZZTo4L_M125_14TeV_powheg2_JHUgenV702_pythia8_200PU
-#TTWJetsToLNu	/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/TTWJetsToLNu_TuneCUETP8M1_14TeV-amcatnloFXFX-madspin-pythia8_200PU
-#TTHH		/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/TTHH_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
-#TTZH		/eos/cms/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/TTZH_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#TTZ	 715.		0.	1	50	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTZJets_TuneCUETP8M2_14TeV_madgraphMLM-pythia8_200PU
+#HZZ       73.		0.	1	51	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre14/GluGluHToZZTo4L_M125_14TeV_powheg2_JHUgenV702_pythia8_200PU
+#ZZTo4L    1256.		0	1	52	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/ZZTo4L_14TeV_powheg_pythia8_200PU
+#ZHToZZ	  24.	 	0	1	53	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15/ZH_HToZZ_M125_14TeV_powheg2-minlo-HZJ_JHUgenV702_pythia8_200PU
+#TTTJ	  0.474		0	1	54	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTTJ_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#TTTT	  12.1		0	1	55	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTTT_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#TTTW	  0.867		0	1	56	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTTW_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#TTWH	  1.36		0	1	57	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTWH_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#TTWW	  7.9		0	1	58	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTWW_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#TTWZ	  2.9		0	1	59	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTWZ_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#TTZZ	  1.5		0	1	60	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/TTZZ_TuneCUETP8M2_14TeV-madgraph-pythia8_200PU
+#WWJJ_EWK  15.2		0	1	61	/store/group/upgrade/delphes_output/YR_Delphes/Delphes342pre15_hadd/WWJJTo2L2Nu2J_SS_EWK_TuneCUEP8M2T4_14TeV-madgraph-pythia8_200PU

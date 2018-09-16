@@ -140,7 +140,7 @@ void selectionWWZ(const TString inputfile="/eos/cms/store/group/upgrade/delphes_
       
       if (fabs(mu->Eta)>3.0) continue;
       if (mu->PT<10) continue;
-      //if (mu->IsolationVar>0.2) continue;
+      if (mu->IsolationVar>0.2) continue;
 
       new(pMu[nMu]) TLepton(mu->PT, mu->Eta, mu->Phi, mu->Charge, 13, mu->IsolationVar);
 
@@ -155,7 +155,7 @@ void selectionWWZ(const TString inputfile="/eos/cms/store/group/upgrade/delphes_
       
       if (fabs(ele->Eta)>3.0) continue;
       if (ele->PT<10) continue;
-      //if (ele->IsolationVar>0.2) continue;
+      if (ele->IsolationVar>0.2) continue;
 
       new(pEl[nEl]) TLepton(ele->PT, ele->Eta, ele->Phi, ele->Charge, 11, ele->IsolationVar);
 
